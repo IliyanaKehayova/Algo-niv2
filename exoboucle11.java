@@ -1,47 +1,4 @@
-/* EXO10 : Créer un quizz de 5 questions, chaque question à deux réponses au choix VRAI OU FAUX, à chaque fois que vous répondez juste à une question vous gagnez un point
- * 
- * Après avoir répondez à vos 5 questions, vous avez le résultat final sur 5.
- * 
- * 
- * **********************AFFICHAGE ATTENDU ****************:
- * 
- * Question 1 : Les chauves souris sont-elles chauves ? (Oui/Non) non
- * Question 2 : Qui a dit « Ma femme est un homme politique » ? Jacques Chirac
- * Question 3 : Quel film « polémique » de Stanley Kubrick n’a été diffusé en France que dix-huit ans après sa sortie ? - Les Sentiers de la gloire
- * Question 4 : La plus longue présidence de la Ve République a été celle de… - François Mitterrand
- * Question 5 : Quelles sont les trois couleurs qui constituent le drapeau de la France ? - bleu blanc rouge
- * 
- * Résultat du QUIZZ, vous avez 5 point(s) / 5
- * 
-*/
-import java.util.Scanner;
-
-public class exoboucle10 {
-    
-public static void main(String [] args){
-
-Scanner quiz = new Scanner(System.in); 
-
-int i=0; 
-
-String response1 = "NON";
-int tries1=2;
-int guesses1=0;
-String response2 = "JACQUES CHIRAC";
-int tries2=2;
-int guesses2=0;
-String response3 = "LES SENTIERS DE LA GLOIRE";
-int tries3=2;
-int guesses3=0;
-String response4 = "FRANCOIS MITTERRAND";
-int tries4=2;
-int guesses4=0;
-String response5 = "BLEU BLANC ROUGE";
-int tries5=2;
-int guesses5=0;
-
-
-do{System.out.println("Les chauves souris sont-elles chauves ? (Oui/Non)");
+/*do{System.out.println("Les chauves souris sont-elles chauves ? (Oui/Non)");
 response1 = quiz.nextLine();
 guesses1++;
 
@@ -117,6 +74,51 @@ do{System.out.println("Quelles sont les trois couleurs qui constituent le drapea
     System.out.println("Vous avez "+i+" bonnes réponses.");
 
 quiz.close();
+
+ */
+
+import java.util.Scanner;
+
+public class exoboucle11 {
+    public static void main(String [] args){
+
+Scanner quiz = new Scanner(System.in); 
+
+int i=1; 
+String goodresponse;
+String response;
+String question;
+int score = 0;
+
+while (i<=5){
+   
+switch(i){
+
+case 1 : question = "Les chauves souris sont-elles chauves ? (Oui/Non)"; goodresponse= "NON"; break;
+case 2 : question = "Qui a dit « Ma femme est un homme politique » ?"; goodresponse= "jacques chirac"; break;
+case 3 : question = "Quel film « polémique » de Stanley Kubrick n’a été diffusé en France que dix-huit ans après sa sortie ?"; goodresponse= "les sentiers de la gloire"; break;
+case 4 : question = "La plus longue présidence de la Ve République a été celle de…"; goodresponse = "francois mitterrand"; break;
+case 5 : question = "Quelles sont les trois couleurs qui constituent le drapeau de la France ?"; goodresponse = "bleu blanc rouge"; break;
+
+default : question = "aucune question"; goodresponse = "j'avoue"; break; 
 }
 
+System.out.println("Question n° "+i+" : "+question);
+response = quiz.nextLine();
+ i++;
+
+if(response.equalsIgnoreCase(goodresponse)){
+    score++;
+    System.out.println("Bonne réponse : + 1 point ! ");
+     
+}
+else {System.out.println("Mauvaise réponse : 0 points");}
+
+}
+System.out.println("Votre score final est : "+score+"/"+(i-1));
+
+
+quiz.close();
+
+}
 }
