@@ -42,50 +42,58 @@ Les afficher à la fin avec le coût total de vos courses
  * 
  */
 
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class exoboucle5 {
+
+    public static void main(String[] args) {
+
+        Scanner liste = new Scanner(System.in);
+
+
+        ArrayList<String> produits = new ArrayList<>();
+        ArrayList<Double> prix = new ArrayList<>();
+
+        int i=0;
+        String produit; 
+        double prixProduit;
+        boolean continuer=true;
+
+        while (continuer) {
+            System.out.println("Bonjour, que voulez vous acheter ?");
+            produit = liste.nextLine();
+            produits.add(produit);
+
+            System.out.println("Combien, ça côute ?");
+            prixProduit = Double.parseDouble(liste.nextLine());
+            prix.add(prixProduit);
+
+            System.out.println("Voulez-vous acheter autre choses (true/false)?");
+            continuer = Boolean.parseBoolean(liste.nextLine());
+        }
+            System.out.println("\nRécapitulatif de vos courses :\n");
+
+            double total = 0;
+
+            for (i = 0; i < produits.size(); i++) {
+            System.out.println("- " + produits.get(i) + " , " + String.format("%.2f", prix.get(i)) + " euros");
+            total += prix.get(i);
+        
+              
+        }
+           
+            System.out.println("\nTotal de vos courses : " + String.format("%.2f", total) + " euros");
+
+        liste.close();
+       
+    } 
     
-public static void main(String[] args){
-
-Scanner courses = new Scanner (System.in);
-
-
-int i=1; 
-String response;
-String question;
-String choix1, choix2, choix3;
-
-String [][] selection = new String [][];
-
-while (i<=3){
-   
-
-
-
-                switch(i){
-
-                case 1 : question = "Bonjour, que voulez vous acheter ?"; choix1; break;
-                case 2 : question = "Combien, ça côute ?"; choix2 ; break;
-                case 3 : question = "Voulez-vous acheter autre choses (OUI/NON)?"; choix3; break;
-
-
-                default : question = "aucune question";  break; 
 }
 
-                System.out.println(question);
-                response = courses.nextLine();
-                i++;
-
-                if(response.equalsIgnoreCase("OUI")){i=i-3;}
-
-            }
-System.out.println("Récapitulatif de vos courses : \n");
 
 
-courses.close();
 
 
-}
 
-}
