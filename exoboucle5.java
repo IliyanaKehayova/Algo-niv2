@@ -40,6 +40,8 @@ Les afficher à la fin avec le coût total de vos courses
  * 
  * Total de vos courses : 5,29€
  * 
+ * ------------ajouter pouvoir supprimer un item de la liste
+ * 
  */
 
 
@@ -60,8 +62,12 @@ public class exoboucle5 {
         String produit; 
         double prixProduit;
         boolean continuer=true;
+        boolean remove=false;
+        String toremove="";
+        
 
-        while (continuer) {
+        while (continuer) 
+                            {
             System.out.println("Bonjour, que voulez vous acheter ?");
             produit = liste.nextLine();
             produits.add(produit);
@@ -72,28 +78,55 @@ public class exoboucle5 {
 
             System.out.println("Voulez-vous acheter autre choses (true/false)?");
             continuer = Boolean.parseBoolean(liste.nextLine());
-        }
+                            }
+
+
             System.out.println("\nRécapitulatif de vos courses :\n");
 
             double total = 0;
 
-            for (i = 0; i < produits.size(); i++) {
-            System.out.println("- " + produits.get(i) + " , " + String.format("%.2f", prix.get(i)) + " euros");
+            for (i = 0; i < produits.size(); i++) 
+                                            {
+            System.out.println("- "+ produits.get(i) + " : " +prix.get(i) + " euros");
             total += prix.get(i);
         
               
-        }
-           
-            System.out.println("\nTotal de vos courses : " + String.format("%.2f", total) + " euros");
+                                                 }
+            System.out.println("Souhaitez-vous supprimer un article ? true/false");
+            remove=Boolean.parseBoolean(liste.nextLine());
 
-        liste.close();
-       
-    } 
-    
+                if(!remove)  {
+                            System.out.println("Total de vos courses : " +total+ " euros");
+                            }
+                else if(remove)                     {
+                            System.out.println("Quel article souhaitez-vous supprimer ?");
+                            toremove = liste.nextLine();
+                            int ligne = produits.indexOf(toremove);
+
+
+
+                               if (ligne != -1) {
+                                produits.remove(ligne);
+                                 prix.remove(ligne);
+    System.out.println(toremove + " a été retiré de la liste.");
+} else {
+    System.out.println("Article pas trouvé dans la liste.");
 }
 
 
+total = 0;
+System.out.println("\nListe mise à jour :");
+for (int j = 0; j < produits.size(); j++) {
+    System.out.println("- " + produits.get(j) + " : " + prix.get(j) + " euros");
+    total += prix.get(j);
+}
+System.out.println("Total de vos courses : " + total + " euros");
+                                                }                                               
+               liste.close();                        
+             
+                                                }
 
+                                                    }
 
 
 

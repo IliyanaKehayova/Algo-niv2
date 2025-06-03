@@ -64,7 +64,54 @@ Vous pouvez retirer qu'en multiple de 10
  * 
  */
 
+ import java.util.Scanner;
 
 public class exoboucle6 {
     
+public static void main(String [] args){
+
+Scanner banque = new Scanner(System.in); 
+
+
+String question;
+int response;
+double solde = 2000;
+
+System.out.println("Bienvenu sur votre compte bancaire\n");
+
+while (response!=0){
+
+    System.out.println("(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");
+    response = banque.nextInt();
+
+    if (response=1){System.out.println("Combien voulez-vous retirer ?");};
+    double montant = banque.nextDouble();
+    double reste=solde-montant;
+
+            if ((montant<=solde+500) && montant%10=0){System.out.println("Opération acceptée : "+montant+"  euros ont été retirés de votre compte. Voulez-vous autre chose ?\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");
+                if(response!=0){System.out.println("Vous avez actuellement"+reste+" euros sur votre solde. Voulez-vous autre chose ?\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");
+                        if((montant<=solde+500) && montant%10=0){System.out.println("Opération acceptée : "+montant+"  euros ont été retirés de votre compte. Voulez-vous autre chose ?\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");
+                        
+                else{System.out.println("Merci de votre visite, au revoir :) !");}
+            else if (montant<=solde+500 && montant%10>0){System.out.println("Opération acceptée : "+montant+"  euros ont été retirés de votre compte. Voulez-vous autre chose ?\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");};
+            else {System.out.println("Opération annulée : votre solde est insuffisant.\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");};
+
+    else if (response=2)
+
+
+
+    }}}
+
+
+
+
+
+
+
+
+
+
+
+banque.close();
+}
 }
