@@ -62,56 +62,78 @@ Vous pouvez retirer qu'en multiple de 10
  * 
  * 
  * 
- */
+*/
 
- import java.util.Scanner;
+import java.util.Scanner;
 
 public class exoboucle6 {
-    
-public static void main(String [] args){
 
-Scanner banque = new Scanner(System.in); 
+    public static void main(String[] args) {
 
+        Scanner banque = new Scanner(System.in);
 
-String question;
-int response;
-double solde = 2000;
+        double solde = 2000;
+        int i = 0;
 
-System.out.println("Bienvenu sur votre compte bancaire\n");
+        System.out.println("Bienvenue sur votre compte bancaire\n");
 
-while (response!=0){
+        while (i != 4) {
+            System.out.println("\nQue puis-je faire pour vous ?\n(1) Retirer de l'argent\n(2) Consulter votre solde\n(3) Déposer de l'argent\n(4) Quitter");
 
-    System.out.println("(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");
-    response = banque.nextInt();
+            i = banque.nextInt();
 
-    if (response=1){System.out.println("Combien voulez-vous retirer ?");};
-    double montant = banque.nextDouble();
-    double reste=solde-montant;
+            if (i == 1) {
+                System.out.println("Combien voulez-vous retirer ?");
+                double montant = banque.nextDouble();
 
-            if ((montant<=solde+500) && montant%10=0){System.out.println("Opération acceptée : "+montant+"  euros ont été retirés de votre compte. Voulez-vous autre chose ?\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");
-                if(response!=0){System.out.println("Vous avez actuellement"+reste+" euros sur votre solde. Voulez-vous autre chose ?\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");
-                        if((montant<=solde+500) && montant%10=0){System.out.println("Opération acceptée : "+montant+"  euros ont été retirés de votre compte. Voulez-vous autre chose ?\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");
-                        
-                else{System.out.println("Merci de votre visite, au revoir :) !");}
-            else if (montant<=solde+500 && montant%10>0){System.out.println("Opération acceptée : "+montant+"  euros ont été retirés de votre compte. Voulez-vous autre chose ?\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");};
-            else {System.out.println("Opération annulée : votre solde est insuffisant.\n(0)Quitter\n(1)Retirer de l'argent\n(2)Consulter votre solde\n(3)Déposer de l'argent;");};
+                if (montant <= solde + 500 && montant % 10 == 0) {
+                    solde -= montant;
+                    System.out.println("Opération acceptée : " + montant + " euros ont été retirés.");
+                    System.out.println("Votre solde actuel : " + solde);
+                                                                 } 
+                else 
+                        {
+                    System.out.println("Opération annulée. Vérifiez que le montant est correct (max découvert : 500€, divisible par 10).");
+                        }
 
-    else if (response=2)
+                        } 
+            else if (i == 2) {
+                System.out.println("Votre solde actuel est de : " + solde);
 
+                            } 
+            else if (i == 3) 
+                            {
+                System.out.println("Combien voulez-vous déposer ?");
+                double depot = banque.nextDouble();
 
+                if (depot >= 5 && depot % 5 == 0) {
+                    solde += depot;
+                    System.out.println("Opération acceptée : " + depot + " euros ont été déposés.");
+                    System.out.println("Votre solde actuel : " + solde);
+                } else {
+                    System.out.println("Opération annulée. Le dépôt doit être au minimum de 5€ et divisible par 5.");
+                }
 
-    }}}
+                             } 
+            else if (i == 4) {
+                System.out.println("Merci de votre visite ! Au revoir !");
+                break;
 
+                             } 
+            else {
+                System.out.println("Choix invalide. Veuillez entrer 1, 2, 3 ou 4.");
+                 }
 
+            
+            System.out.println("Voulez-vous faire autre chose ? (true/false)");
+            boolean continuer = banque.nextBoolean();
+            if (!continuer) 
+                            {
+                System.out.println("Merci de votre visite ! Au revoir !");
+                break;
+                            }
+        }
 
-
-
-
-
-
-
-
-
-banque.close();
-}
+        banque.close();
+    }
 }

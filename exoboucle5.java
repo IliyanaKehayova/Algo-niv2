@@ -98,35 +98,40 @@ public class exoboucle5 {
                 if(!remove)  {
                             System.out.println("Total de vos courses : " +total+ " euros");
                             }
-                else if(remove)                     {
+                else if(remove)                    {
                             System.out.println("Quel article souhaitez-vous supprimer ?");
                             toremove = liste.nextLine();
                             int ligne = produits.indexOf(toremove);
 
 
 
-                               if (ligne != -1) {
+                                if (ligne != -1) 
+                                {
                                 produits.remove(ligne);
-                                 prix.remove(ligne);
-    System.out.println(toremove + " a été retiré de la liste.");
-} else {
-    System.out.println("Article pas trouvé dans la liste.");
-}
+                                prix.remove(ligne);
+                                System.out.println(toremove + " a été retiré de la liste.");
+                                } 
+                                else 
+                                {
+                                System.out.println("Article pas trouvé dans la liste.");
+                                }
 
 
-total = 0;
-System.out.println("\nListe mise à jour :");
-for (int j = 0; j < produits.size(); j++) {
-    System.out.println("- " + produits.get(j) + " : " + prix.get(j) + " euros");
-    total += prix.get(j);
-}
-System.out.println("Total de vos courses : " + total + " euros");
-                                                }                                               
+                                total = 0;
+                                int j;
+                                System.out.println("\nListe mise à jour :");
+                                for (j = 0; j < produits.size(); j++) 
+                                {
+                                System.out.println("- " + produits.get(j) + " : " + prix.get(j) + " euros");
+                                total += prix.get(j);
+                                }
+                                System.out.println("Total de vos courses : " + total + " euros");
+                                                    }                                               
                liste.close();                        
              
                                                 }
 
-                                                    }
+                                }
 
 
 
