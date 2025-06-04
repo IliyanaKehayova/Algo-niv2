@@ -65,19 +65,22 @@ public class exoboucle5 {
         boolean remove=false;
         String toremove="";
         
+        System.out.println("Bonjour cher client/chère cliente ! \n");
 
         while (continuer) 
                             {
-            System.out.println("Bonjour, que voulez vous acheter ?");
+            System.out.println("Que voulez vous acheter ?");
             produit = liste.nextLine();
             produits.add(produit);
 
             System.out.println("Combien, ça côute ?");
-            prixProduit = Double.parseDouble(liste.nextLine());
+            prixProduit = liste.nextDouble();
+            liste.nextLine();
             prix.add(prixProduit);
 
             System.out.println("Voulez-vous acheter autre choses (true/false)?");
-            continuer = Boolean.parseBoolean(liste.nextLine());
+            continuer = liste.nextBoolean();
+            liste.nextLine();
                             }
 
 
@@ -93,7 +96,9 @@ public class exoboucle5 {
               
                                                  }
             System.out.println("Souhaitez-vous supprimer un article ? true/false");
-            remove=Boolean.parseBoolean(liste.nextLine());
+            remove=liste.nextBoolean();
+            liste.nextLine();
+
 
                 if(!remove)  {
                             System.out.println("Total de vos courses : " +total+ " euros");
