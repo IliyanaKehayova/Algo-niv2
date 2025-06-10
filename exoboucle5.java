@@ -44,9 +44,10 @@ Les afficher à la fin avec le coût total de vos courses
  * 
  */
 
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
 
 public class exoboucle5 {
 
@@ -64,6 +65,12 @@ public class exoboucle5 {
         boolean continuer=true;
         boolean remove=false;
         String toremove="";
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
+        String formattedDate=now.format(formatter);
+        
+        
         
         System.out.println("Bonjour cher client/chère cliente ! \n");
 
@@ -102,6 +109,8 @@ public class exoboucle5 {
 
                 if(!remove)  {
                             System.out.println("Total de vos courses : " +total+ " euros");
+                            System.out.println("Date et heure de vos achats : "+formattedDate);
+                            
                             }
                 else if(remove)                    {
                             System.out.println("Quel article souhaitez-vous supprimer ?");
@@ -131,6 +140,7 @@ public class exoboucle5 {
                                 total += prix.get(j);
                                 }
                                 System.out.println("Total de vos courses : " + total + " euros");
+                                System.out.println("Date et heure de vos achats : "+formattedDate);
                                                     }                                               
                liste.close();                        
              

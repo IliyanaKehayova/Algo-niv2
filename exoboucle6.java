@@ -65,6 +65,8 @@ Vous pouvez retirer qu'en multiple de 10
 */
 
 import java.util.Scanner;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class exoboucle6 {
 
@@ -74,6 +76,10 @@ public class exoboucle6 {
 
         double solde = 2000;
         int i = 0;
+
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyy HH:mm:ss");
+        String formattedDate=now.format(formatter);
 
         System.out.println("Bienvenue sur votre compte bancaire\n");
 
@@ -90,6 +96,7 @@ public class exoboucle6 {
                     solde -= montant;
                     System.out.println("Opération acceptée : " + montant + " euros ont été retirés.");
                     System.out.println("Votre solde actuel : " + solde);
+                    System.out.println("Date et heure de votre action : "+formattedDate);
                                                                  } 
                 else 
                         {
@@ -110,6 +117,7 @@ public class exoboucle6 {
                     solde += depot;
                     System.out.println("Opération acceptée : " + depot + " euros ont été déposés.");
                     System.out.println("Votre solde actuel : " + solde);
+                    System.out.println("Date et heure de votre action : "+formattedDate);
                 } else {
                     System.out.println("Opération annulée. Le dépôt doit être au minimum de 5€ et divisible par 5.");
                 }

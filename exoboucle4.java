@@ -23,8 +23,12 @@
  */
 
 
-
+import java.time.LocalDateTime;
 import java.util.Scanner;
+import java.time.format.DateTimeFormatter;
+import java.util.InputMismatchException;
+
+
 
 
 public class exoboucle4 {
@@ -34,8 +38,15 @@ public static void main(String [] args){
 Scanner commande = new Scanner(System.in); 
 
 int i=1; 
-boolean response;
+boolean response=false;
 String question;
+
+
+LocalDateTime now = LocalDateTime.now();
+DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+String formattedDate = now.format(formatter);
+LocalDateTime parsedDateVege = now.plusMinutes(20);
+LocalDateTime parsedDateViande = now.plusMinutes(40);
 
 while (i<=4){
    
@@ -50,14 +61,25 @@ default : question = "aucune question"; break;
 }
 
 System.out.println(question);
+try{
 response = commande.nextBoolean();
+
+}
+catch(InputMismatchException e){System.out.println("Entrée invalide, veuillez écrire 'true' ou 'false'.");
+commande.next();
+continue;
+
+};
+
 i++;
 
-if(i==2 && response==false){i++;
+if(i == 2 && response == false){i++;
 }
 
 }
-System.out.println("Merci pour votre commande, ça sera prêt dans 20 min.");
+System.out.println("Merci pour votre commande, date et heure de votre commande : "+formattedDate);
+if(i>=2 && response==false){System.out.println("Heure de réception prévue : "+parsedDateVege.format(formatter));}
+else{System.out.println("Heure de réception prévue : "+parsedDateViande.format(formatter));};
 
 commande.close();
 
