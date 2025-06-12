@@ -154,7 +154,7 @@ public class exojalon100625 {
             }
 
             // Augmentation/réduction du prix en fonction du délai d'achat (nombre de mois)
-            long monthsBetween = Math.abs(Duration.between(LocalDateTime.now(), departureDateTime).toDays() / 30); //on calcule 
+            long monthsBetween = Math.abs(Duration.between(LocalDateTime.now(), departureDateTime).toDays() / 30); //on calcule le nombre de jours entre la date de commande et la date de depart. Afin de savoir combien de mois ça nous fait on divise par 30.
             if (monthsBetween > 6) {
                 // Plus de 6 mois  : 40% moins cher
                 flightprice = flightprice - flightprice * 40 / 100;
